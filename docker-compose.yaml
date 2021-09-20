@@ -1,0 +1,37 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      args:
+        user: adsomos
+        uid: 1000
+      context: docker/php
+      dockerfile: Dockerfile
+    #image: pvitordb/webhook_app:latest
+    working_dir: /var/www/html/
+    volumes: 
+      - ./:/var/www/html/
+    restart: unless-stopped
+    networks: 
+      - "webhook_backend"
+    ports: 
+      - "9003:9003"
+  apache:
+    build:
+      context: docker/httpd
+      dockerfile: Dockerfile
+    #image: pvitordb/webhook_app_apache:latest
+    restart: unless-stopped
+    depends_on:
+      - app
+    volumes: 
+      - ./:/var/www/html/ 
+    networks:
+      - "webhook_backend"
+    ports:
+      - 8084:80
+
+networks:
+  webhook_backend:
+    driver: bridge
