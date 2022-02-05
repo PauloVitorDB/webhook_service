@@ -1,6 +1,6 @@
-# Tratamento de requisições por serviços single instance
+# Tratamento de requisições webhook por serviços single instance
 
-Utilize este projeto caso precise tratar requisições webhook de serviços que demandam uma única instância de URL para mais de um domínio (Single Instance).
+Projeto feito com o intuito de tratar requisições webhook de serviços que demandam uma única instância de URL para mais de um domínio (Single Instance).
 
 # Execute o projeto
 Para executar o projeto instale o Docker e o Docker Compose e utilize os comandos abaixo no diretório raiz do projeto:
@@ -10,7 +10,7 @@ docker-compose up -d
 ```
 
 ## Configurar serviços
-Utilize a estrutura declara no arquivo do caminho relativo abaixo para definir os serviços por cliente e os parâmetros de cada serviço 
+Utilize a estrutura declarada no arquivo do caminho relativo abaixo para definir os serviços por cliente e os parâmetros de cada serviço 
 ```
 webhook_service/config/constants.php
 ```
